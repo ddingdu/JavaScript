@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS DOM</title>
+</head>
+<style>
+  .red {
+    color: red;
+  }
+
+  .big {
+    font-size: 32px;
+  }
+</style>
+<body>
+  <h1>selector test</h1>
+
+  <!-- <button id="event-button">커져라!</button> -->
+
+  <ul id="list">
+    <li class="red">apple</li>
+    <li>orange</li>
+    <li id="banana">banana</li>
+    <li>grape</li>
+    <li class="red">strawberry</li>
+  </ul>
+
+  <script>
+    // 1. strawberry 아래(맨 밑)에 새로운 과일(망고) 하나를 더 추가하시오.
+
+    // 추가할 과일 태그 만들기
+    const mango = document.createElement("li")
+    // 새로 만든 li 태그에 망고 텍스트 넣어주기
+    mango.innerText = '망고'  // 새로 만든 것 구분하기 위해 한글로
+
+    // ul 태그 찾아오기-appendChild 쓰려면 부모 태그 찾아야함 (id가 list == ul 태그)
+    // const parent = document.querySelector("#list")
+    const parent = document.querySelector("ul")
+    // 찾은 부모 태그에 appendChild 이용해서 태그 추가하기
+    parent.appendChild(mango)
+
+
+    // 2. apple 위(맨 위)에 새로운 과일(파인애플)을 하나 더 추가하시오.
+    const pineapple = document.createElement("li")
+    pineapple.innerText = '파인애플' // 부모는 위에서 선언했으니까 추가할 필요 없음!
+    
+    parent.prepend(pineapple)
+    
+    
+    // 3. orange 와 banana 사이에 새로운 과일(키위)을 하나 더 추가하시오.
+    const kiwi = document.createElement("li")
+    kiwi.innerText = '키위'
+
+    const banana = document.querySelector("#banana")
+    parent.insertBefore(kiwi, banana)  // 키위를 바나나에(위에) 넣어줌
+
+
+    // 4. class 가 'red'인 노드 모두 삭제하시오.
+    const reds = document.querySelectorAll('.red')
+
+    reds.forEach(element => {
+      element.remove()
+    });
+
+    
+    // // 5. 모든 li 태그의 글자 크기를 키워보시오.
+    const liTags = document.querySelectorAll('li')
+
+    liTags.forEach(element => {
+      element.classList.add('big')
+    });
+
+
+
+    // 버튼을 누르면 이벤트 실행하기 (4일차 내용 맛보기)
+    // const button = document.querySelector('#event-button') 
+    
+    // button.addEventListener('click', () => {
+    //   changeFont()
+    // })
+
+    // function changeFont() {
+    //   const LiTags = document.querySelectorAll('li')
+      
+    //   LiTags.forEach(element => {
+    //     element.classList.add('big')
+    //   });
+    // }
+
+  </script>
+</body>
+</html>

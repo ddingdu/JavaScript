@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+  <button id="btn">클릭</button>
+  <input type="text">
+
+  <script>
+    const btn = document.querySelector('#btn')
+    // btn이 클릭되면 함수 실행
+    btn.addEventListener('click', function() {
+      const h1 = document.querySelector('h1') // h1 태그 선택
+      h1.classList.toggle('blue') // 클래스 blue를 토글하기
+    })
+
+    const input = document.querySelector('input')
+
+    // input 에 값이 입력되면 함수 실행
+    input.addEventListener('input', function(evnet) {
+      // h1 태그 선택
+      const h1Tag = document.querySelector('h1')
+      // input 값을 태그의 컨텐츠로 채우기
+      h1Tag.innerText = evnet.target.value
+    })
+  </script>
+
+</body>
+</html>

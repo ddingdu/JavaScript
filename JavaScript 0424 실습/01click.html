@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">클릭</button>
+  <p id="counter">0</p>
+
+  <script>
+    // 이벤트로 하고 싶은 일
+    // : p태그 안의 텍스트가 버튼을 클릭할 때마다 1씩 증가
+    let count = 0
+    // 이벤트가 발생할 요소를 찾아서 가져오기
+    const btn = document.querySelector("#btn")
+
+    // 이벤트가 발생하면 어떤 일을 하고 싶은지
+    btn.addEventListener("click", function(event) {
+
+      // event.target: 누구한테서 이벤트 발생되었는지 확인
+      console.log("버튼이 클릭됨", event.target)
+      
+      // 버튼을 누를때마다 숫자가 1씩 증가
+      count += 1
+      // 이 증가된 숫자를 다시 p요소 안의 숫자로 바꿔줌
+      const counter = document.querySelector("#counter")
+      counter.innerText = count
+    })
+
+
+    // 함수로 저장
+    const function1 = function(event) {
+    console.log("버튼이 클릭됨", event.target)
+    count += 1
+    const counter = document.querySelector("#counter")
+    counter.innerText = count
+    }
+
+    btn.addEventListener("click", function1)
+    // 등록한 이벤트 리스너 함수 제거
+    btn.removeEventListener("click",function1)
+    
+  </script>
+</body>
+</html>

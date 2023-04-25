@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>인기 영화들</h1>
+  <ul></ul>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  
+  <script>
+    // API 키를 활용해 영화 정보를 axios로 받아오고 평점 8점 이상인 영화를 리스트로 나타내시오
+    const API_URI = 'https://api.themoviedb.org/3/movie/popular?api_key=250864cefa8edb436b78f5f5b8803df1&language=ko-KR&page=1'
+
+axios({
+    method: 'get',
+    url: API_URI
+})
+.then ((response) => {
+    response.data.results.forEach(element => {
+        const ulTag = document.querySelector('ul')
+        const vote_avg = element.vote_average
+        
+        if (vote_avg >= 8) {
+            const liTag = document.createElement('li')
+            liTag.innerText=element.title
+            ulTag.appendChild(liTag)
+        }
+    })
+})
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>버튼</button> 
+  <script>
+    // 동기식
+    // 버튼 누르고 확인 눌러야 글씨가 뜸
+    // 끝날 때까지 기다렸다가 'p Element' 가 뜨도록 처리
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', () => {
+      alert('you clicked me!')
+      const pElem = document.createElement('p')
+      pElem.innerText = 'p Element'
+      document.body.appendChild(pElem)
+    })
+  </script>
+</body>
+</html>
